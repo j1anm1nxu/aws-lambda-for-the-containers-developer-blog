@@ -6,6 +6,15 @@ Description: >
 Parameters:
   GitHubUsername:
     Type: String
+    Default: aws-containers
+
+  HugoBucketName:
+    Type: String
+    Default: aws-lambda-for-the-containers-developer-blog
+
+  HugoQueueName:
+    Type: String
+    Default: aws-lambda-for-the-containers-developer-blog
 
 Resources:
   HugoFunction:
@@ -30,7 +39,7 @@ Resources:
       - arn:aws:iam::aws:policy/AmazonS3FullAccess
       Environment:
         Variables:
-          AWS_LAMBDA_FOR_THE_CONTAINERS_DEVELOPER_BLOG_BUCKET: !Ref HugoBucket
+          AWS_LAMBDA_FOR_THE_CONTAINERS_DEVELOPER_BLOG_BUCKET: !Ref HugoBucketName
           AWS_LAMBDA_FOR_THE_CONTAINERS_DEVELOPER_BLOG_GITHUB_USERNAME: !Ref GitHubUsername
     Metadata:
       Dockerfile: Dockerfile
@@ -40,33 +49,41 @@ Resources:
   HugoBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
-      AccessControl: PublicRead
+      BucketName: !Ref HugoBucketName
+      # AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
-      PublicAccessBlockConfiguration:  
-        BlockPublicAcls: False
-        BlockPublicPolicy: False
-        IgnorePublicAcls: False
-        RestrictPublicBuckets: False
-  
-  HugoBucketPolicy: 
-    Type: AWS::S3::BucketPolicy
-    Properties: 
-      Bucket: !Ref HugoBucket
-      PolicyDocument:
-        Version: 2012-10-17
-        Statement:
-          - Action:
-              - 's3:GetObject'
-            Effect: Allow
-            Resource: !Sub 'arn:aws:s3:::${HugoBucket}/*'
-            Principal: '*'
+      # PublicAccessBlockConfiguration:  
+      #   BlockPublicAcls: False
+      #   BlockPublicPolicy: False
+      #   IgnorePublicAcls: False
+      #   RestrictPublicBuckets: False
+      OwnershipControls:
+         Rules:
+           - ObjectOwnership: ObjectWriter
+
+  # HugoBucketPolicy: 
+  #   Type: AWS::S3::BucketPolicy
+  #   Properties: 
+  #     Bucket: !Ref HugoBucket
+  #     PolicyDocument:
+  #       Version: 2012-10-17
+  #       Statement:
+  #         - Action:
+  #             - 's3:*'
+  #           Effect: Allow
+  #           Resource: !Sub 'arn:aws:s3:::${HugoBucket}/*'
+  #           Principal: '*'
 
   Queue: 
     Type: AWS::SQS::Queue
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
+      QueueName: !Ref HugoQueueName
       VisibilityTimeout: 120
             
 Outputs:

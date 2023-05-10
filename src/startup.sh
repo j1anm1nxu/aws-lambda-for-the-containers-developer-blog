@@ -5,13 +5,13 @@ set -euo pipefail
 # The container initializes before processing the invocations #
 ###############################################################
 
-echo Installing the latest version of Hugo...
-cd /tmp
-export LATESTHUGOBINARYURL=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.assets[].browser_download_url' | grep Linux-64bit.tar.gz | grep extended)
-export LATESTHUGOBINARYARTIFACT=${LATESTHUGOBINARYURL##*/}
-curl -LO $LATESTHUGOBINARYURL
-tar -zxvf $LATESTHUGOBINARYARTIFACT
-./hugo version
+# echo Installing the latest version of Hugo...
+# cd /tmp
+# export LATESTHUGOBINARYURL=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.assets[].browser_download_url' | grep Linux-64bit.tar.gz | grep extended)
+# export LATESTHUGOBINARYARTIFACT=${LATESTHUGOBINARYURL##*/}
+# curl -LO $LATESTHUGOBINARYURL
+# tar -zxvf $LATESTHUGOBINARYARTIFACT
+# ./hugo version
 
 ###############################################
 # Processing the invocations in the container #
@@ -30,11 +30,14 @@ do
   # Run my arbitrary program #
   ############################
 
-  /businesscode.sh
+  # /businesscode.sh
 
   ############################
 
   # Send the response
-  curl -X POST "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/$REQUEST_ID/response"  -d '{"statusCode": 200}'
+  # curl -X POST "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/$REQUEST_ID/response"  -d '{"statusCode": 200}'
+  # curl -X POST "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/$REQUEST_ID/response"  -d '{"statusCode": 200, "body": {"lambdaStatus": "SUCCESS"}}' -H 'Content-Type: application/json'
+  curl -X POST "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/$REQUEST_ID/response"  -d '{"statusCode": 200, "body": '"$EVENT_DATA"'}' -H 'Content-Type: application/json' 
+
 
 done

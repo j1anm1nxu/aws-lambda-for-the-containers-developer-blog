@@ -1,0 +1,13 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "aws-lambda-for-the-containers-developer-blog"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1nmx2tlpedo0j"
+s3_prefix = "aws-lambda-for-the-containers-developer-blog"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_NAMED_IAM"
+disable_rollback = true
+parameter_overrides = "GitHubUsername=\"aws-containers\" HugoBucketName=\"aws-lambda-for-the-containers-developer-blog\" HugoQueueName=\"aws-lambda-for-the-containers-developer-blog\""
+image_repositories = ["HugoFunction=177340731096.dkr.ecr.us-east-1.amazonaws.com/awslambdaforthecontainersdeveloperblog98c4e603/hugofunction2eadd850repo"]

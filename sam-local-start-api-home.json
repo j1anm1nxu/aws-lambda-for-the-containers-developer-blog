@@ -1,0 +1,115 @@
+{
+    "body": "None",
+    "headers": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,* /*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+        "Cache-Control": "max-age=0",
+        "Connection": "keep-alive",
+        "Host": "127.0.0.1:3000",
+        "Sec-Ch-Ua": "Chromium 112",
+        "Google Chrome": "112",
+        "Not:A-Brand": "99",
+        "Sec-Ch-Ua-Mobile": "?0",
+        "Sec-Ch-Ua-Platform": "macOS",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Upgrade-Insecure-Requests": "1",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+        "X-Forwarded-Port": "3000",
+        "X-Forwarded-Proto": "http"
+    },
+    "httpMethod": "GET",
+    "isBase64Encoded": "False",
+    "multiValueHeaders": {
+        "Accept": [
+            "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+        ],
+        "Accept-Encoding": [
+            "gzip, deflate, br"
+        ],
+        "Accept-Language": [
+            "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7"
+        ],
+        "Cache-Control": [
+            "max-age=0"
+        ],
+        "Connection": [
+            "keep-alive"
+        ],
+        "Host": [
+            "127.0.0.1: 3000"
+        ],
+        "Sec-Ch-Ua": [
+            "Chromium 112",
+            "Google Chrome 112",
+            "Not:A-Brand 99"
+        ],
+        "Sec-Ch-Ua-Mobile": [
+            "?0"
+        ],
+        "Sec-Ch-Ua-Platform": [
+            "macOS"
+        ],
+        "Sec-Fetch-Dest": [
+            "document"
+        ],
+        "Sec-Fetch-Mode": [
+            "navigate"
+        ],
+        "Sec-Fetch-Site": [
+            "none"
+        ],
+        "Sec-Fetch-User": [
+            "?1"
+        ],
+        "Upgrade-Insecure-Requests": [
+            "1"
+        ],
+        "User-Agent": [
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+        ],
+        "X-Forwarded-Port": [
+            "3000"
+        ],
+        "X-Forwarded-Proto": [
+            "http"
+        ]
+    },
+    "multiValueQueryStringParameters": "None",
+    "path": "/",
+    "pathParameters": "None",
+    "queryStringParameters": "None",
+    "requestContext": {
+        "accountId": "123456789012",
+        "apiId": "1234567890",
+        "domainName": "127.0.0.1: 3000",
+        "extendedRequestId": "None",
+        "httpMethod": "GET",
+        "identity": {
+            "accountId": "None",
+            "apiKey": "None",
+            "caller": "None",
+            "cognitoAuthenticationProvider": "None",
+            "cognitoAuthenticationType": "None",
+            "cognitoIdentityPoolId": "None",
+            "sourceIp": "127.0.0.1",
+            "user": "None",
+            "userAgent": "Custom User Agent String",
+            "userArn": "None"
+        },
+        "path": "/",
+        "protocol": "HTTP/1.1",
+        "requestId": "2b0653c0-dd57-4f50-b2a4-95d901f31905",
+        "requestTime": "10/May/2023: 18: 24: 11 +0000",
+        "requestTimeEpoch": 1683743051,
+        "resourceId": "123456",
+        "resourcePath": "/",
+        "stage": "Prod"
+    },
+    "resource": "/",
+    "stageVariables": "None",
+    "version": "1.0"
+}
